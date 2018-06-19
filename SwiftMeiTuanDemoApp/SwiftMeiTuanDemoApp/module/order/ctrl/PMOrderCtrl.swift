@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OrderCtrl:UIViewController
+class PMOrderCtrl:UIViewController
 {
     override func loadView()
     {

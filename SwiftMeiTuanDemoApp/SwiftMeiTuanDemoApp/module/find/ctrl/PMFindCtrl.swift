@@ -1,5 +1,5 @@
 //
-//  MyCtrl.swift
+//  findCtrl.swift
 //  SwiftMeiTuanDemoApp
 //
 //  Created by liupm on 2018/5/10.
@@ -8,17 +8,11 @@
 
 import UIKit
 
-class MyCtrl:UIViewController
+class PMFindCtrl: UIViewController
 {
     override func loadView()
     {
         super.loadView()
-        self.view.backgroundColor = UIColor.green
+        self.view.backgroundColor = UIColor.yellow
     }
 }
-
-
-
-
-
-
