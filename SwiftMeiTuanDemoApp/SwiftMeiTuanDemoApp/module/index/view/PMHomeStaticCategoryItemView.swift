@@ -14,30 +14,36 @@ class PMHomeStaticCategoryItem: NSObject
     var title:String?
     var tip:String?
     var itemSize:CGSize?
+    var imageSize:CGSize?
+    var padding:CGFloat?
 }
 
-class PMHomeStaticCategoryItemCell: UIView
+class PMHomeStaticCategoryItemView: UIView
 {
     var imageView:UIImageView?
     var label:UILabel?
     var tipImageView:UIImageView?
     var item:PMHomeStaticCategoryItem?
     
-    
     convenience init(_ frame:CGRect,_ item:PMHomeStaticCategoryItem)
     {
         self.init(frame:frame)
         
-        imageView = UIImageView.init(frame:CGRect(x: 10.0, y: 10.0, width: self.width-20, height: self.width-20))
+        let ax = (item.itemSize!.width - item.imageSize!.width)/2
+        
+        imageView = UIImageView.init(frame:CGRect(x: ax, y: 8.0, width: item.imageSize!.width, height: item.imageSize!.height))
         imageView?.image = UIImage.init(named: item.imageUrl!)
-        imageView?.backgroundColor = UIColor.red
+        imageView?.contentMode = UIViewContentMode.scaleAspectFill
+        imageView?.clipsToBounds = true
         
-        label = UILabel.init(frame:CGRect(x: 0.0, y: (imageView?.bottom)!,width: self.width, height: 30))
+        label = UILabel.init(frame:CGRect(x: 0.0, y: (imageView?.bottom)!+item.padding!,width: self.width, height: 13))
         label?.font = UIFont.systemFont(ofSize: 12.0)
-        label?.textColor = UIColor.lightGray
-        label?.backgroundColor = UIColor.gray
+        label?.textColor = UIColor(hexStr: "666666")
+        label?.backgroundColor = UIColor.white
+        label?.text = item.title
+        label?.textAlignment = NSTextAlignment.center
         
-        tipImageView = UIImageView.init(frame:CGRect(x: imageView!.right, y: 0.0, width: 30, height: 20))
+        tipImageView = UIImageView.init(frame:CGRect(x: imageView!.right, y: 0.0, width: 30, height: 13))
         tipImageView?.isHidden = true
         tipImageView?.backgroundColor = UIColor.red
         

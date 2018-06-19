@@ -63,4 +63,30 @@ extension UIView
             return self.frame.origin
         }
     }
+    
+    var bottom:CGFloat{
+            return self.origin.y+self.height
+    }
+    
+    var top:CGFloat{
+        set(newTop){
+            self.origin = CGPoint(x: self.origin.x, y: newTop)
+        }
+        get{
+            return self.origin.y
+        }
+    }
+    
+    var left:CGFloat{
+        set(newLeft){
+            self.origin = CGPoint(x: newLeft, y: self.origin.y)
+        }
+        get{
+            return self.origin.x
+        }
+    }
+    
+    var right:CGFloat{
+        return self.origin.x+self.width
+    }
 }

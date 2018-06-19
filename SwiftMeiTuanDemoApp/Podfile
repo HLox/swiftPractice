@@ -1,0 +1,13 @@
+platform :ios, '8.0'
+
+xcodeproj 'SwiftMeiTuanDemoApp.xcodeproj'
+
+target 'SwiftMeiTuanDemoApp' do
+pod 'Masonry'
+pod 'ReactiveCocoa', '~> 7.0'
+pod 'MJRefresh'
+pod 'SDWebImage', '~> 4.0'
+pod 'AFNetworking', '~> 3.0'
+end
+
+

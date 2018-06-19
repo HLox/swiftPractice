@@ -12,15 +12,17 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var my: MyCtrl?
-    var order:OrderCtrl?
+    var my: PMMyCtrl?
+    var order:PMOrderCtrl?
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
+    {
         // Override point for customization after application launch.
-        
+        application.setStatusBarStyle(UIStatusBarStyle.lightContent, animated: false)
+
         window = UIWindow.init(frame:UIScreen.main.bounds)
         
-        let index:IndexCtrl = IndexCtrl.init()
+        let index:PMIndexCtrl = PMIndexCtrl.init()
         let indexNav:UINavigationController = UINavigationController.init(rootViewController: index)
         indexNav.tabBarItem.title = "首页"
         indexNav.tabBarItem.image = UIImage.init(imageLiteralResourceName: "pfb_tabbar_homepage")
@@ -31,32 +33,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         near.tabBarItem.image = UIImage.init(imageLiteralResourceName: "pfb_tabbar_merchant")
         near.tabBarItem.selectedImage = UIImage(imageLiteralResourceName: "pfb_tabbar_merchant_selected")
 
-        let find:FindCtrl = FindCtrl.init()
-        find.tabBarItem.title = "发现"
-        find.tabBarItem.image = UIImage.init(imageLiteralResourceName: "pfb_tabbar_discover")
-        find.tabBarItem.selectedImage = UIImage(imageLiteralResourceName: "pfb_tabbar_discover_selected")
-
+        let find:PMFindCtrl = PMFindCtrl.init()
+        let findNav:UINavigationController = UINavigationController.init(rootViewController: find)
+        findNav.tabBarItem.title = "发现"
+        findNav.tabBarItem.image = UIImage.init(imageLiteralResourceName: "pfb_tabbar_discover")
+        findNav.tabBarItem.selectedImage = UIImage(imageLiteralResourceName: "pfb_tabbar_discover_selected")
+        findNav.navigationBar.isTranslucent = false
+        
 //        let order:OrderCtrl = OrderCtrl.init()
-        order = OrderCtrl.init()
+        order = PMOrderCtrl.init()
         order?.tabBarItem.title = "订单"
         order!.tabBarItem.image = UIImage.init(imageLiteralResourceName: "pfb_tabbar_order")
         order!.tabBarItem.selectedImage = UIImage(imageLiteralResourceName: "pfb_tabbar_order_selected")
 
 //        let my:MyCtrl = MyCtrl.init()
-        my = MyCtrl.init()
+        my = PMMyCtrl.init()
         my?.tabBarItem.title = "我的"
         my!.tabBarItem.image = UIImage.init(imageLiteralResourceName: "pfb_tabbar_mine")
         my!.tabBarItem.selectedImage = UIImage(imageLiteralResourceName: "pfb_tabbar_mine_selected")
 
         let tabbarCtrl:UITabBarController = UITabBarController.init()
         tabbarCtrl.tabBar.isTranslucent = false
-        tabbarCtrl.viewControllers = [indexNav,near,find,order!,my!]
+        tabbarCtrl.viewControllers = [indexNav,near,findNav,order!,my!]
         tabbarCtrl.tabBar.tintColor = UIColor(hexStr: "20C3AD")
         tabbarCtrl.tabBar.backgroundImage = UIImage(imageLiteralResourceName: "pfb_tabbar_background")
         
         window?.rootViewController = tabbarCtrl
         window?.makeKeyAndVisible();
-        
+
         return true
     }
 

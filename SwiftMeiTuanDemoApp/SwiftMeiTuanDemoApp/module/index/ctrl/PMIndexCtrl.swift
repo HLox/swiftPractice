@@ -21,15 +21,14 @@ class PMIndexCtrl: UIViewController {
 
         self.view.backgroundColor = UIColor.red;
         self.setNavBarView()
-        
-//        let c = MJRefreshLabelTextColor
-        
-        self.view.frame = CGRect(x: self.view.x, y: 0, width: self.view.width, height: self.view.height-44)
-        self.view.mas_makeConstraints { (make:MASConstraintMaker!) in
-//            make!.bottom.mas_equalTo(self.view)
-        }
+
         indexView = PMIndexView.init(frame: self.view.bounds)
-        self.view.addSubview(indexView!)        
+        self.view.addSubview(indexView!)
+
+        indexView!.mas_makeConstraints { (make:MASConstraintMaker!) in
+            make.left.top().right().left().mas_equalTo()(self.view)
+            make.bottom.mas_equalTo()(self.view.mas_bottom)?.offset()(-44)
+        }
 
         (indexView!.tableView)!.addObserver(self, forKeyPath: "contentOffset", options: NSKeyValueObservingOptions.new, context: nil)
     }

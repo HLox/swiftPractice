@@ -1,0 +1,6 @@
+module Pods_SwiftMeiTuanDemoApp {
+  umbrella header "Pods-SwiftMeiTuanDemoApp-umbrella.h"
+
+  export *
+  module * { export * }
+}
