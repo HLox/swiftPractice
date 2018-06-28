@@ -8,3 +8,6 @@
 #import "AFNetworking.h"
 #import "SDWebImageWebPCoder.h"
 #import "UIImage+WebP.h"
+#import "UIImage+GIF.h"
+#import "FLAnimatedImage.h"
+#import "FLAnimatedImageView.h"

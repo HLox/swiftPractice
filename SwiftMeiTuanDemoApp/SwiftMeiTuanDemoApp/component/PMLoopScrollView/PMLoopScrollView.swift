@@ -46,28 +46,24 @@ class PMLoopScrollView:UIView,UIScrollViewDelegate
             dataSource = datas;
             scrollView?.contentSize = CGSize(width: CGFloat(count+2)*frame.size.width, height: frame.size.height)
             
+            let placeholderImage:UIImage = UIImage.init(named: "baby_main_default_pic")!
+            
             let lastItem = dataSource?.last
             let firstImageView = UIImageView.init(frame: CGRect(x: 0.0, y: 0.0, width: frame.size.width, height: frame.size.height))
-            firstImageView.contentMode = UIViewContentMode.scaleAspectFill
-            firstImageView.clipsToBounds = true
-            firstImageView.image = UIImage.init(named: (lastItem?.imageUrl)!)
+            firstImageView.sd_setImage(with: URL.init(string: (lastItem?.imageUrl)!), placeholderImage: placeholderImage, completed: nil)
             scrollView?.addSubview(firstImageView)
             
             for i in 1...count {
                 let imageFrame = CGRect(x: frame.size.width*CGFloat(i), y: 0.0, width: frame.size.width, height: frame.size.height)
                 let imageView = UIImageView.init(frame: imageFrame)
-                imageView.contentMode = UIViewContentMode.scaleAspectFill
-                imageView.clipsToBounds = true
                 let item = dataSource![i-1]
-                imageView.image = UIImage.init(named: item.imageUrl!)
+                imageView.sd_setImage(with: URL.init(string: (item.imageUrl)!), placeholderImage: placeholderImage, completed: nil)
                 scrollView?.addSubview(imageView)
             }
             
             let firstItem = dataSource?.first
             let lastImageView = UIImageView.init(frame: CGRect(x: frame.size.width*CGFloat(count+1), y: 0.0, width: frame.size.width, height: frame.size.height))
-            lastImageView.image = UIImage.init(named: (firstItem?.imageUrl)!)
-            lastImageView.contentMode = UIViewContentMode.scaleAspectFill
-            lastImageView.clipsToBounds = true
+            lastImageView.sd_setImage(with: URL.init(string: (firstItem?.imageUrl)!), placeholderImage: placeholderImage, completed: nil)
             scrollView?.addSubview(lastImageView)
         
             let firstRect = CGRect(x: frame.size.width, y: 0.0, width: frame.size.width, height: frame.size.height)

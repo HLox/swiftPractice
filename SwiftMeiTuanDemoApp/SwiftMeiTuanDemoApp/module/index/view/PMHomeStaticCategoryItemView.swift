@@ -33,6 +33,9 @@ class PMHomeStaticCategoryItemView: UIView
         
         imageView = UIImageView.init(frame:CGRect(x: ax, y: 8.0, width: item.imageSize!.width, height: item.imageSize!.height))
         imageView?.image = UIImage.init(named: item.imageUrl!)
+        if imageView!.image == nil {
+            imageView!.sd_setImage(with: URL.init(string: (item.imageUrl)!), placeholderImage: nil, completed: nil)
+        }
         imageView?.contentMode = UIViewContentMode.scaleAspectFill
         imageView?.clipsToBounds = true
         

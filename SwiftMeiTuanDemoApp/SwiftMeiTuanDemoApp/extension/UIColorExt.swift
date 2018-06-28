@@ -13,7 +13,11 @@ extension UIColor
 {
     convenience init(hexStr: String)
     {
-        let scanner = Scanner(string: hexStr)
+        var colorStr = hexStr
+        if colorStr.hasPrefix("#") {
+            colorStr.remove(at: hexStr.startIndex)
+        }
+        let scanner = Scanner(string: colorStr)
         scanner.scanLocation = 0
         
         var rgbValue: UInt64 = 0
